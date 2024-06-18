@@ -1,71 +1,113 @@
-# Getting Started with Create React App
+# Happy Interactive
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to Happy Interactive! This is the company website for Happy Interactive, where we build custom websites for clients. Our website is built using React, Tailwind CSS, Node, and Express.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+* [About](#about)
+* [Features](#features)
+* [Technologies](#technologies)
+* [Getting Started](#getting-started)
+* [Usage](#usage)
+* [Showcase](#showcase)
+* [License](#license)
+* [Contact](#contact)
 
-### `npm start`
+## About
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Happy Interactive is dedicated to providing high-quality, custom-built websites for our clients. Our website includes information about our services and an easy way for potential clients to contact us.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+* **Home Page**: Introduction to Happy Interactive and our services.
+* **About Page**: Detailed information about our company and team.
+* **Contact Page**: Form for clients to get in touch with us.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
 
-### `npm run build`
+* **Frontend**: React, Tailwind CSS
+* **Backend**: Node.js, Express
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To get a local copy up and running, follow these steps.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm run eject`
+Make sure you have Node.js and npm installed on your machine. You can download them from [Node.js official website](https://nodejs.org/).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone the repository:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```bash
+    git clone https://github.com/your-username/happy-interactive.git
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Navigate to the project directory:
 
-## Learn More
+    ```bash
+    cd happy-interactive
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Install the dependencies for the frontend:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    ```bash
+    cd frontend
+    npm install
+    ```
 
-### Code Splitting
+4. Install the dependencies for the backend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    ```bash
+    cd ../backend
+    npm install
+    ```
 
-### Analyzing the Bundle Size
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+To run the project locally, follow these steps:
 
-### Making a Progressive Web App
+1. Start the backend server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    ```bash
+    cd backend
+    npm start
+    ```
 
-### Advanced Configuration
+2. Start the frontend development server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    ```bash
+    cd ../frontend
+    npm start
+    ```
 
-### Deployment
+3. Open your browser and go to `http://localhost:3000` to view the website.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Showcase
 
-### `npm run build` fails to minify
+### Home Page
+
+![Home Page](path/to/homepage-screenshot.png)
+
+### About Page
+
+![About Page](path/to/aboutpage-screenshot.png)
+
+### Contact Page
+
+![Contact Page](path/to/contactpage-screenshot.png)
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+Happy Interactive - [your-email@example.com](mailto:your-email@example.com)
+
+Project Link: [https://github.com/your-username/happy-interactive](https://github.com/your-username/happy-interactive)
+
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # happy-interactive-2
