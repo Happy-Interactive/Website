@@ -1,6 +1,6 @@
 # Happy Interactive
 
-Welcome to Happy Interactive! This is the company website for Happy Interactive, where we build custom websites for clients. Our website is built using React, Tailwind CSS, Node, and Express.
+Welcome to Happy Interactive! This is the company website for Happy Interactive, where we specialize in creating engaging, interactive websites and applications for our clients. Our website is built using React, Tailwind CSS, Node.js, and Express.
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ Welcome to Happy Interactive! This is the company website for Happy Interactive,
 
 ## About
 
-Happy Interactive is dedicated to providing high-quality, custom-built websites for our clients. Our website includes information about our services and an easy way for potential clients to contact us.
+Happy Interactive is dedicated to providing high-quality, interactive, and custom-built digital experiences for our clients. Our expertise ranges from developing simple websites to complex web applications, ensuring that each project is tailored to meet our clients' unique needs. Our website includes detailed information about our services and an easy way for potential clients to contact us.
 
 ## Features
 
@@ -98,17 +98,8 @@ To run the project locally, follow these steps:
 
 ![Contact Page](path/to/contactpage-screenshot.png)
 
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
 ## Contact
 
-Happy Interactive - [your-email@example.com](mailto:your-email@example.com)
-
-Project Link: [https://github.com/your-username/happy-interactive](https://github.com/your-username/happy-interactive)
-
+Happy Interactive - [admin@happyinteractive.co](mailto:admin@happyinteractive.co)
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# happy-interactive-2
-# -himain-website
