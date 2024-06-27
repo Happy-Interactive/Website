@@ -1,12 +1,13 @@
-// src/components/Smile.js
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
+import { useNavigate } from "react-router-dom";
 
 const SmileyFace = () => {
   const mountRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const currentMount = mountRef.current;
@@ -31,6 +32,26 @@ const SmileyFace = () => {
     controls.enableDamping = true;
     controls.dampingFactor = 0.25;
     controls.enableZoom = true;
+
+    // Raycaster and mouse setup
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+    const onClick = (event) => {
+      // Calculate mouse position in normalized device coordinates (-1 to +1)
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+      // Update the raycaster with the camera and mouse position
+      raycaster.setFromCamera(mouse, camera);
+
+      // Calculate objects intersecting the raycaster
+      const intersects = raycaster.intersectObjects(scene.children, true);
+
+      if (intersects.length > 0) {
+        navigate("/home");
+      }
+    };
 
     const fontLoader = new FontLoader();
     fontLoader.load(
@@ -119,11 +140,15 @@ const SmileyFace = () => {
       }
     );
 
+    // Add click event listener
+    window.addEventListener("click", onClick);
+
     // Cleanup
     return () => {
       currentMount.removeChild(renderer.domElement);
+      window.removeEventListener("click", onClick);
     };
-  }, []);
+  }, [navigate]);
 
   return <div ref={mountRef}></div>;
 };
