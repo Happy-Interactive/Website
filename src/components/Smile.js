@@ -9,6 +9,7 @@ import './Smile.css'; // Import CSS
 const SmileyFace = () => {
   const mountRef = useRef(null);
   const [show, setShow] = useState(false);
+  const faceGroupRef = useRef(null); // Add a ref for the faceGroup
 
   useEffect(() => {
     const currentMount = mountRef.current;
@@ -56,21 +57,37 @@ const SmileyFace = () => {
           z: 2.3,
           onComplete: () => {
             // Turn the screen yellow
-            gsap.to(scene.background, { duration: 1, r: 1, g: 1, b: 0 });
-
-            // Trigger the title animation
-            setTimeout(() => {
-              setShow(true);
-              animateTitle();
-            }, 1000);
+            gsap.to(scene.background, {
+              duration: 1,
+              r: 1,
+              g: 1,
+              b: 0,
+              onComplete: () => {
+                // Hide the smile
+                hideSmile();
+                // Trigger the title animation
+                setShow(true);
+                setTimeout(() => {
+                  animateTitle();
+                }, 1000);
+              },
+            });
           },
         });
+      }
+    };
+
+    const hideSmile = () => {
+      const faceGroup = faceGroupRef.current;
+      if (faceGroup) {
+        faceGroup.visible = false;
       }
     };
 
     const animateTitle = () => {
       const letters = document.querySelectorAll("#title span");
       console.log("Found letters: ", letters); // Log the letters to see if they are found
+      letters.forEach(letter => letter.classList.remove("hidden"));
       gsap.fromTo(
         letters,
         { opacity: 0, y: -50 },
@@ -90,6 +107,7 @@ const SmileyFace = () => {
       (font) => {
         // Create a group to hold the face, eyes, and smile
         const faceGroup = new THREE.Group();
+        faceGroupRef.current = faceGroup; // Set the ref to the faceGroup
 
         // Create face
         const faceGeometry = new THREE.SphereGeometry(2, 32, 32);
@@ -184,7 +202,7 @@ const SmileyFace = () => {
   // Function to split title into spans
   const createSpans = (text) => {
     return text.split("").map((char, index) => (
-      <span key={index} style={{ display: "inline-block" }}>
+      <span key={index} className="hidden" style={{ display: "inline-block" }}>
         {char}
       </span>
     ));
