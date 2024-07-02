@@ -1,13 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
-import { useNavigate } from "react-router-dom";
+import { gsap } from "gsap";
+import './Smile.css'; // Import CSS
 
 const SmileyFace = () => {
   const mountRef = useRef(null);
-  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const currentMount = mountRef.current;
@@ -49,8 +50,38 @@ const SmileyFace = () => {
       const intersects = raycaster.intersectObjects(scene.children, true);
 
       if (intersects.length > 0) {
-        navigate("/home");
+        // Zoom into the smile
+        gsap.to(camera.position, {
+          duration: 2,
+          z: 2.3,
+          onComplete: () => {
+            // Turn the screen yellow
+            gsap.to(scene.background, { duration: 1, r: 1, g: 1, b: 0 });
+
+            // Trigger the title animation
+            setTimeout(() => {
+              setShow(true);
+              animateTitle();
+            }, 1000);
+          },
+        });
       }
+    };
+
+    const animateTitle = () => {
+      const letters = document.querySelectorAll("#title span");
+      console.log("Found letters: ", letters); // Log the letters to see if they are found
+      gsap.fromTo(
+        letters,
+        { opacity: 0, y: -50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+          stagger: 0.1,
+        }
+      );
     };
 
     const fontLoader = new FontLoader();
@@ -69,7 +100,7 @@ const SmileyFace = () => {
         // Create left eye
         const leftEyeGeometry = new TextGeometry("h", {
           font: font,
-          size: 0.8, // Increased size
+          size: 0.8,
           height: 0.1,
         });
         const leftEyeMaterial = new THREE.MeshStandardMaterial({
@@ -83,7 +114,7 @@ const SmileyFace = () => {
         // Create right eye
         const rightEyeGeometry = new TextGeometry("i", {
           font: font,
-          size: 0.8, // Increased size
+          size: 0.8,
           height: 0.1,
         });
         const rightEyeMaterial = new THREE.MeshStandardMaterial({
@@ -148,9 +179,37 @@ const SmileyFace = () => {
       currentMount.removeChild(renderer.domElement);
       window.removeEventListener("click", onClick);
     };
-  }, [navigate]);
+  }, []);
 
-  return <div ref={mountRef}></div>;
+  // Function to split title into spans
+  const createSpans = (text) => {
+    return text.split("").map((char, index) => (
+      <span key={index} style={{ display: "inline-block" }}>
+        {char}
+      </span>
+    ));
+  };
+
+  return (
+    <div ref={mountRef}>
+      <div
+        id="title"
+        className={show ? "" : "hidden"}
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          fontSize: "3rem",
+          fontFamily: "'Roboto', sans-serif",
+          fontWeight: 700,
+          color: "#ff3333",
+        }}
+      >
+        {createSpans("Happy Interactive")}
+      </div>
+    </div>
+  );
 };
 
 export default SmileyFace;
